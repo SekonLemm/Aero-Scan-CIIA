@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AeroScan QR Code - Scan to visit our website">
+    <title>AeroScan - QR Code</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 50%, #1e1038 100%);
+            color: #f4f1f8;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            overflow-x: hidden;
+        }
+
+        .qr-container {
+            background: rgba(45, 27, 78, 0.8);
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(255, 107, 53, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .qr-header {
+            margin-bottom: 2rem;
+        }
+
+        .qr-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .qr-logo img {
+            height: 60px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .qr-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ff6b35, #9d4edd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .qr-subtitle {
+            color: #b8a9d1;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .qr-code-wrapper {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: inline-block;
+        }
+
+        .qr-code-wrapper img {
+            display: block;
+            width: 280px;
+            height: 280px;
+            border-radius: 10px;
+        }
+
+        .qr-description {
+            color: #b8a9d1;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .qr-url {
+            background: rgba(255, 107, 53, 0.1);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            word-break: break-all;
+            font-size: 0.85rem;
+            color: #ff6b35;
+            font-family: monospace;
+        }
+
+        .qr-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .qr-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .qr-btn-primary {
+            background: linear-gradient(135deg, #ff6b35, #9d4edd);
+            color: white;
+        }
+
+        .qr-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .qr-btn-secondary {
+            background: rgba(255, 107, 53, 0.1);
+            color: #ff6b35;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+        }
+
+        .qr-btn-secondary:hover {
+            background: rgba(255, 107, 53, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .qr-info {
+            background: rgba(255, 107, 53, 0.05);
+            border-left: 3px solid #ff6b35;
+            border-radius: 6px;
+            padding: 1rem;
+            text-align: left;
+            font-size: 0.85rem;
+            color: #b8a9d1;
+            line-height: 1.6;
+        }
+
+        .qr-info strong {
+            color: #ff6b35;
+        }
+
+        @media (max-width: 640px) {
+            .qr-container {
+                padding: 2rem;
+            }
+
+            .qr-title {
+                font-size: 1.5rem;
+            }
+
+            .qr-code-wrapper {
+                padding: 1rem;
+            }
+
+            .qr-code-wrapper img {
+                width: 220px;
+                height: 220px;
+            }
+
+            .qr-buttons {
+                flex-direction: column;
+            }
+
+            .qr-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="qr-container">
+        <div class="qr-header">
+            <div class="qr-logo">
+                <img src="./Logo.png" alt="AeroScan Logo">
+            </div>
+            <h1 class="qr-title">AEROSCAN</h1>
+            <p class="qr-subtitle">Intelligent Aerial Surveillance</p>
+        </div>
+
+        <div class="qr-code-wrapper">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=https://aero-scan-ciia.netlify.app" alt="AeroScan QR Code">
+        </div>
+
+        <p class="qr-description">
+            Scan this QR code to visit AeroScan - AI-powered environmental surveillance for detecting and monitoring illegal waste landfills.
+        </p>
+
+        <div class="qr-url">
+            https://aero-scan-ciia.netlify.app
+        </div>
+
+        <div class="qr-buttons">
+            <a href="https://aero-scan-ciia.netlify.app" class="qr-btn qr-btn-primary">Visit Website</a>
+            <button class="qr-btn qr-btn-secondary" onclick="downloadQR()">Download QR</button>
+        </div>
+
+        <div class="qr-info" style="margin-top: 2rem;">
+            <strong>📱 How to Use:</strong><br>
+            Open your phone camera or QR code scanner app and point it at this QR code to visit our website instantly.
+        </div>
+    </div>
+
+    <script>
+        function downloadQR() {
+            const link = document.createElement('a');
+            link.href = 'https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https://aero-scan-ciia.netlify.app';
+            link.download = 'AeroScan-QR-Code.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
