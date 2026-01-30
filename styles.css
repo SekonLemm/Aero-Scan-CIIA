@@ -26,6 +26,42 @@
     --shadow-glow-orange: 0 0 30px rgba(255, 107, 53, 0.3);
     --shadow-glow-purple: 0 0 30px rgba(157, 78, 221, 0.3);
 }
+/* =============================================
+   Logo Styles
+============================================= */
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
+}
+
+.nav-logo-placeholder {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  background: rgba(255, 107, 53, 0.1);
+  border-radius: 8px;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;           /* space between logo & title */
+  padding: 10px 20px;
+}
+
+.site-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1f7a5c;      /* eco-tech green */
+}
+
 
 /* ============================================
    BASE STYLES
@@ -96,10 +132,14 @@ nav {
     z-index: 1000;
     padding: 1.5rem 0;
     border-bottom: 1px solid rgba(255, 107, 53, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
 }
 
 .nav-container {
-    max-width: 1400px;
+    width: 100%;
     margin: 0 auto;
     padding: 0 2rem;
     display: flex;
