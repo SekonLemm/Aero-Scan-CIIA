@@ -1,0 +1,769 @@
+/* ============================================
+   AEROSCAN - STYLESHEET
+   AI-Powered Environmental Surveillance
+   ============================================ */
+
+/* ============================================
+   CSS VARIABLES (Design Tokens)
+   ============================================ */
+:root {
+    /* Color Palette */
+    --color-deep-space: #1a0a2e;
+    --color-nebula-purple: #2d1b4e;
+    --color-vibrant-orange: #ff6b35;
+    --color-electric-purple: #9d4edd;
+    --color-alert-amber: #ffa500;
+    --color-surface: #241342;
+    --color-surface-light: #3d2463;
+    --color-text-primary: #f4f1f8;
+    --color-text-secondary: #b8a9d1;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 50%, #1e1038 100%);
+    --gradient-accent: linear-gradient(135deg, var(--color-vibrant-orange), var(--color-electric-purple));
+    
+    /* Shadows */
+    --shadow-glow-orange: 0 0 30px rgba(255, 107, 53, 0.3);
+    --shadow-glow-purple: 0 0 30px rgba(157, 78, 221, 0.3);
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    background: var(--color-deep-space);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   BACKGROUND ANIMATION
+   ============================================ */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+.drone-path {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: var(--color-vibrant-orange);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--color-vibrant-orange);
+    animation: droneFly 15s linear infinite;
+}
+
+.drone-path:nth-child(2) { 
+    animation-delay: 5s; 
+    top: 30%; 
+}
+
+.drone-path:nth-child(3) { 
+    animation-delay: 10s; 
+    top: 60%; 
+}
+
+@keyframes droneFly {
+    0% { left: -5%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 105%; opacity: 0; }
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(26, 10, 46, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-accent);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-vibrant-orange);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-top: 80px;
+    background: var(--gradient-hero);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(157, 78, 221, 0.1) 0%, transparent 50%);
+}
+
+.hero-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: rgba(255, 107, 53, 0.1);
+    border: 1px solid var(--color-vibrant-orange);
+    border-radius: 50px;
+    color: var(--color-vibrant-orange);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    animation: fadeInDown 0.8s ease;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-vibrant-orange) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.hero-description {
+    font-size: 1.3rem;
+    color: var(--color-text-secondary);
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+    animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    animation: fadeInUp 0.8s ease 0.6s both;
+}
+
+.btn {
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: var(--gradient-accent);
+    color: var(--color-deep-space);
+    box-shadow: var(--shadow-glow-orange);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px rgba(255, 107, 53, 0.5);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--color-text-primary);
+    border: 2px solid var(--color-vibrant-orange);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 107, 53, 0.1);
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   SECTION COMMON STYLES
+   ============================================ */
+section {
+    padding: 8rem 2rem;
+    position: relative;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 5rem;
+}
+
+.section-badge {
+    display: inline-block;
+    padding: 0.4rem 1.2rem;
+    background: rgba(157, 78, 221, 0.1);
+    border: 1px solid var(--color-electric-purple);
+    border-radius: 50px;
+    color: var(--color-electric-purple);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.section-description {
+    font-size: 1.2rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+}
+
+/* ============================================
+   HOW IT WORKS SECTION
+   ============================================ */
+.how-it-works {
+    background: var(--color-surface);
+}
+
+.steps-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    gap: 4rem;
+}
+
+.step {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.step:nth-child(even) .step-content {
+    order: 2;
+}
+
+.step-number {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 6rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--color-vibrant-orange) 0%, var(--color-electric-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.3;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.step h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-vibrant-orange);
+}
+
+.step p {
+    color: var(--color-text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.step-visual {
+    padding: 3rem;
+    background: rgba(26, 10, 46, 0.5);
+    border: 2px solid rgba(255, 107, 53, 0.2);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.step-visual::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.step-icon {
+    font-size: 5rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================
+   FEATURES SECTION
+   ============================================ */
+.features {
+    background: var(--gradient-hero);
+}
+
+.features-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    padding: 2.5rem;
+    background: rgba(61, 36, 99, 0.6);
+    border: 1px solid rgba(255, 107, 53, 0.2);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient-accent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-electric-purple);
+    box-shadow: var(--shadow-glow-purple);
+}
+
+.feature-card:hover::before {
+    transform: scaleX(1);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-accent);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.feature-card h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-primary);
+}
+
+.feature-card p {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+}
+
+/* ============================================
+   TECHNOLOGY STACK SECTION
+   ============================================ */
+.tech-stack {
+    background: var(--color-surface);
+}
+
+.tech-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.tech-item {
+    padding: 2rem;
+    background: rgba(26, 10, 46, 0.5);
+    border-left: 4px solid var(--color-vibrant-orange);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.tech-item:hover {
+    border-left-color: var(--color-electric-purple);
+    transform: translateX(10px);
+}
+
+.tech-item h4 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-vibrant-orange);
+}
+
+.tech-item p {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+}
+
+/* ============================================
+   DRONE SPECIFICATIONS SECTION
+   ============================================ */
+.drone-specs {
+    background: var(--gradient-hero);
+}
+
+.specs-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.spec-category {
+    background: rgba(61, 36, 99, 0.6);
+    border: 1px solid rgba(255, 107, 53, 0.2);
+    border-radius: 16px;
+    padding: 2.5rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.spec-category:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-vibrant-orange);
+    box-shadow: var(--shadow-glow-orange);
+}
+
+.spec-category h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-vibrant-orange);
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(255, 107, 53, 0.2);
+}
+
+.spec-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.spec-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.8rem;
+    background: rgba(26, 10, 46, 0.3);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.spec-item:hover {
+    background: rgba(255, 107, 53, 0.1);
+    transform: translateX(5px);
+}
+
+.spec-label {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    flex: 1;
+}
+
+.spec-value {
+    color: var(--color-text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: right;
+    flex: 1.2;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* ============================================
+   USE CASES SECTION
+   ============================================ */
+.use-cases {
+    background: var(--gradient-hero);
+}
+
+.cases-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.case-card {
+    padding: 2rem;
+    background: rgba(61, 36, 99, 0.6);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 107, 53, 0.1);
+    transition: all 0.3s ease;
+}
+
+.case-card:hover {
+    border-color: var(--color-electric-purple);
+    transform: scale(1.05);
+}
+
+.case-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.case-card h4 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--color-text-primary);
+}
+
+.case-card p {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+    background: var(--color-deep-space);
+    padding: 3rem 2rem;
+    border-top: 1px solid rgba(255, 107, 53, 0.2);
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+}
+
+.footer-brand {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+}
+
+.footer-description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+.footer-links h4 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-primary);
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--color-vibrant-orange);
+}
+
+.footer-bottom {
+    max-width: 1400px;
+    margin: 3rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 107, 53, 0.1);
+    text-align: center;
+    color: var(--color-text-secondary);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll Reveal Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 968px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2.2rem;
+    }
+
+    .step {
+        grid-template-columns: 1fr;
+    }
+
+    .step:nth-child(even) .step-content {
+        order: 1;
+    }
+
+    .nav-links {
+        gap: 1.5rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+
+    section {
+        padding: 4rem 1rem;
+    }
+}
