@@ -38,9 +38,9 @@
 }
 
 .nav-logo {
-  height: 50%;
+  height: 22%;
   width: auto;
-  max-width: 0%;
+  max-width: 22%;
   display: block;
   flex-shrink: 0;
   z-index: 10;
